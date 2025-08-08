@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    background-color: #4a6fa5;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+#storage-status {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+main {
+    padding: 20px;
+}
+
+#todo-app {
+    margin-bottom: 30px;
+}
+
+.todo-header {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#todo-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#category-select, #filter-category, #sort-by, #sort-order {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+#add-btn {
+    padding: 10px 20px;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#add-btn:hover {
+    background-color: #3a5a85;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#todo-list {
+    list-style-type: none;
+}
+
+.todo-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background-color 0.3s;
+}
+
+.todo-item:hover {
+    background-color: #f9f9f9;
+}
+
+.todo-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.todo-text {
+    flex: 1;
+}
+
+.todo-completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.todo-category {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    background-color: #eee;
+}
+
+.category-work {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.category-personal {
+    background-color: #d6eaf8;
+    color: #084298;
+}
+
+.category-study {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.category-other {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.delete-btn, .share-btn, .priority-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+
+.share-btn:hover {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+}
+
+.priority-btn {
+    color: #ff9800;
+}
+
+.priority-btn.high {
+    color: #f44336;
+}
+
+.instructions {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.instructions h2 {
+    margin-bottom: 15px;
+    color: #4a6fa5;
+}
+
+.instructions h3 {
+    margin: 15px 0 10px;
+    color: #555;
+}
+
+.instructions p, .instructions li {
+    margin-bottom: 10px;
+}
+
+.instructions ul {
+    padding-left: 20px;
+}
+
+.status-success {
+    color: #4caf50;
+}
+
+.status-error {
+    color: #f44336;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .todo-header, .filters {
+        flex-direction: column;
+    }
+
+    #todo-input, #category-select, #add-btn, .filters select {
+        width: 100%;
+    }
+}
+
+/* 弹窗样式 */
+.share-modal, .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 分类选择器容器 */
+.category-select-container {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+/* 添加分类按钮 */
+.add-category-btn {
+    padding: 0 10px;
+    margin-left: 5px;
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.add-category-btn:hover {
+    background-color: #3a5a85;
+}
+
+/* 新分类输入框 */
+#new-category-input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* 模态框按钮容器 */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* 分类模态框按钮 */
+#cancel-category-btn, #confirm-category-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#cancel-category-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+#confirm-category-btn {
+    background-color: #4a6fa5;
+    color: white;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#share-link {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.close-btn, .copy-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.close-btn {
+    background-color: #f1f1f1;
+    color: #333;
+    margin-right: 10px;
+}
+
+.copy-btn {
+    background-color: #4a6fa5;
+    color: white;
+}

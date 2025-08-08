@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>待办事项管理</h1>
+            <div id="storage-status" class="status"></div>
+        </header>
+
+        <main>
+            <section id="todo-app">
+                <div class="todo-header">
+                    <input type="text" id="todo-input" placeholder="添加新的待办事项...">
+                    <div class="category-select-container">
+                        <select id="category-select">
+                            <option value="default">默认分类</option>
+                            <option value="work">工作</option>
+                            <option value="personal">个人</option>
+                            <option value="study">学习</option>
+                            <option value="other">其他</option>
+                        </select>
+                        <button id="add-category-btn" class="add-category-btn">+</button>
+                    </div>
+                    <button id="add-btn">添加</button>
+                </div>
+
+                <div class="filters">
+                    <select id="filter-category">
+                        <option value="all">所有分类</option>
+                        <option value="default">默认分类</option>
+                        <option value="work">工作</option>
+                        <option value="personal">个人</option>
+                        <option value="study">学习</option>
+                        <option value="other">其他</option>
+                    </select>
+                    <select id="sort-by">
+                        <option value="date-added">按添加日期</option>
+                        <option value="priority">按优先级</option>
+                        <option value="alphabetical">按字母顺序</option>
+                    </select>
+                    <select id="sort-order">
+                        <option value="asc">升序</option>
+                        <option value="desc">降序</option>
+                    </select>
+                </div>
+
+                <ul id="todo-list"></ul>
+            </section>
+
+            <section id="instructions" class="instructions">
+                <h2>使用说明</h2>
+                <div class="instructions-content">
+                    <h3>数据存储</h3>
+                    <p>本应用使用浏览器的 IndexedDB 进行本地数据持久化存储，不会将您的数据上传到任何服务器。</p>
+                    <p id="storage-info">正在检查本地存储支持情况...</p>
+
+                    <h3>使用方法</h3>
+                    <ul>
+                        <li>在输入框中输入待办事项，选择分类，点击添加按钮</li>
+                        <li>点击待办事项前的复选框标记完成状态</li>
+                        <li>使用筛选器按分类查看待办事项</li>
+                        <li>使用排序功能按照不同条件排序</li>
+                        <li>点击分享按钮生成分享链接</li>
+                    </ul>
+
+                    <h3>注意事项</h3>
+                    <ul>
+                        <li>清除浏览器数据可能会导致待办事项丢失</li>
+                        <li>分享链接仅包含特定待办事项的信息，不包含您的全部数据</li>
+                        <li>请妥善保管您的分享链接，避免未授权访问</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="category-modal" class="modal">
+    <div class="modal-content">
+        <h3>添加新分类</h3>
+        <input type="text" id="new-category-input" placeholder="输入分类名称...">
+        <div class="modal-buttons">
+            <button id="cancel-category-btn">取消</button>
+            <button id="confirm-category-btn">确认</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
